@@ -86,7 +86,7 @@ namespace CuttingSheet_521
             {
                 for (int j = 0; j < Matrix.GetLength(1); j++)
                 {
-                    if (Matrix[i, j] != 0)
+                    if (Matrix[i, j] != -1)
                     {
                         if (i == 0)
                         {
