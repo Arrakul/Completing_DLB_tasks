@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace CuttingSheet_521
@@ -49,8 +49,8 @@ namespace CuttingSheet_521
 
         public static void Algoritm(string[] Lines)
         {
-            int N = Convert.ToInt32(Convert.ToString(Lines[0][0]));
-            int M = Convert.ToInt32(Convert.ToString(Lines[0][2]));
+            int N = Convert.ToInt32(Convert.ToString(Lines[0][0])) + 2;
+            int M = Convert.ToInt32(Convert.ToString(Lines[0][2])) + 2;
             int K = Convert.ToInt32(Convert.ToString(Lines[1][0]));
 
             var MassIndex = Lines[2].Split();
@@ -58,7 +58,7 @@ namespace CuttingSheet_521
 
             for (int i = 0; i < MassIndex.Length; i++)
             {
-                IndexPoint[i] = Convert.ToInt32(MassIndex[i]);
+                IndexPoint[i] = Convert.ToInt32(MassIndex[i]) + 1;
             }
 
             int[,] Matrix = new int[N, M];
@@ -74,6 +74,7 @@ namespace CuttingSheet_521
                 {
                     for (int j = 0; j < Matrix.GetLength(1); j++)
                     {
+                        if (i == 0 || i == Matrix.GetLength(0)-1 || j == 0 || j == Matrix.GetLength(1)-1) Matrix[i, j] = -1;
                         if (I == i && J == j) Matrix[i, j] = -1;
                         else if (Matrix[i, j] != -1) Matrix[i, j] = 1;
                     }
@@ -82,45 +83,13 @@ namespace CuttingSheet_521
 
             int kol_elem = 0;
 
-            for (int i = 0; i < Matrix.GetLength(0); i++)
+            for (int i = 1; i < Matrix.GetLength(0)-1; i++)
             {
-                for (int j = 0; j < Matrix.GetLength(1); j++)
+                for (int j = 1; j < Matrix.GetLength(1)-1; j++)
                 {
                     if (Matrix[i, j] != -1)
                     {
-                        if (i == 0)
-                        {
-                            if (j == 0)
-                            {
-                                if (Matrix[i, j + 1] == -1 && Matrix[i + 1, j] == -1) kol_elem++;
-                            }
-                            else if (j == Matrix.GetLength(1) - 1)
-                            {
-                                if (Matrix[i, j - 1] == -1 && Matrix[i + 1, j] == -1) kol_elem++;
-                            }
-                            else if (Matrix[i, j - 1] == -1 && Matrix[i, j + 1] == -1 && Matrix[i + 1, j] == -1) kol_elem++;
-                        }
-                        else if (i == Matrix.GetLength(0) - 1)
-                        {
-                            if (j == 0)
-                            {
-                                if (Matrix[i, j + 1] == -1 && Matrix[i - 1, j] == -1) kol_elem++;
-                            }
-                            else if (j == Matrix.GetLength(1) - 1)
-                            {
-                                if (Matrix[i, j - 1] == -1 && Matrix[i - 1, j] == -1) kol_elem++;
-                            }
-                            else if (Matrix[i, j - 1] == -1 && Matrix[i, j + 1] == -1 && Matrix[i - 1, j] == -1) kol_elem++;
-                        }
-                        else if (j == 0)
-                        {
-                            if (Matrix[i, j + 1] == -1 && Matrix[i - 1, j] == -1 && Matrix[i + 1, j] == -1) kol_elem++;
-                        }
-                        else if (j == Matrix.GetLength(1) - 1)
-                        {
-                            if (Matrix[i, j - 1] == -1 && Matrix[i - 1, j] == -1 && Matrix[i + 1, j] == -1) kol_elem++;
-                        }
-                        else if (Matrix[i + 1, j] == -1 && Matrix[i - 1, j] == -1 && Matrix[i, j + 1] == -1 && Matrix[i, j - 1] == -1) kol_elem++;
+                       if (Matrix[i + 1, j] == -1 && Matrix[i - 1, j] == -1 && Matrix[i, j + 1] == -1 && Matrix[i, j - 1] == -1) kol_elem++;
                     }
                 }
             }
