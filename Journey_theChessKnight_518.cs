@@ -48,11 +48,11 @@ namespace Journey_theChessKnight_518
 
         public static void Al(string[] data)
         {
-            int x1 = Convert.ToInt32(data[0][0]) - 65;
-            int x2 = Convert.ToInt32(data[1][0]) - 65;
+            int J1 = Convert.ToInt32(data[0][0]) - 65;
+            int J2 = Convert.ToInt32(data[1][0]) - 65;
 
-            int y1 = Convert.ToInt32(Convert.ToString(data[0][1])) - 1;
-            int y2 = Convert.ToInt32(Convert.ToString(data[1][1])) - 1;
+            int I1 = Convert.ToInt32(Convert.ToString(data[0][1])) - 1;
+            int I2 = Convert.ToInt32(Convert.ToString(data[1][1])) - 1;
 
             int[,] ChessBoard = new int[8, 8];
 
@@ -86,7 +86,7 @@ namespace Journey_theChessKnight_518
                 }
             }
 
-            WriteAnswer(ChessBoard[Math.Abs(y1 - y2), Math.Abs(x1 - x2)]-1);
+            WriteAnswer(ChessBoard[Math.Abs(I1 - I2), Math.Abs(J1 - J2)]-1);
         }
     }
 }
