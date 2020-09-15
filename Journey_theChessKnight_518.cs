@@ -86,7 +86,7 @@ namespace Journey_theChessKnight_518
                 }
             }
 
-            WriteAnswer(ChessBoard[Math.Abs(I1 - I2), Math.Abs(J1 - J2)]-1);
+            WriteAnswer(ChessBoard[I2, J2]-1);
         }
     }
 }
