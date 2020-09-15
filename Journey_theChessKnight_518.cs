@@ -56,7 +56,7 @@ namespace Journey_theChessKnight_518
 
             int[,] ChessBoard = new int[8, 8];
 
-            ChessBoard[y1, x1] = 1;
+            ChessBoard[I1, J1] = 1;
 
             int k = 0;
 
