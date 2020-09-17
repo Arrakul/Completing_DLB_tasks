@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace Brackets_519
 {
@@ -37,9 +38,9 @@ namespace Brackets_519
         {
             FileStream file = new FileStream("output.txt", FileMode.Create);
 
-            string ans = (answer) ? "Да" : "Нет";
+            string ans = (answer) ? "\u0414\u0430" : "\u041d\u0435\u0442";
 
-            using (StreamWriter st = new StreamWriter(file))
+            using (StreamWriter st = new StreamWriter(file, Encoding.GetEncoding(866)))
             {
                 st.WriteLine(ans);
             }
