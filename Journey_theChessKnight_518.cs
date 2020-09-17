@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.IO;
+using System.Text;
 
 namespace Journey_theChessKnight_518
 {
@@ -22,12 +23,8 @@ namespace Journey_theChessKnight_518
             {
                 string line;
                 int i = 0;
-
-                while ((line = st.ReadLine()) != null)
-                {
-                    Lines[i] = line;
-                    i++;
-                }
+                
+                Lines = st.ReadLine().Split();
             }
 
             file.Close();
@@ -38,7 +35,7 @@ namespace Journey_theChessKnight_518
         {
             FileStream file = new FileStream("output.txt", FileMode.Create);
 
-            using (StreamWriter st = new StreamWriter(file))
+            using (StreamWriter st = new StreamWriter(file, Encoding.Default))
             {
                 st.WriteLine(answer);
             }
@@ -86,7 +83,7 @@ namespace Journey_theChessKnight_518
                 }
             }
 
-            WriteAnswer(ChessBoard[I2, J2]-1);
+            WriteAnswer(ChessBoard[I2, J2] - 1);
         }
     }
 }
