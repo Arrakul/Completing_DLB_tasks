@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -7,8 +7,14 @@ namespace Brackets_519
 {
     class Program
     {
+        public static Dictionary<char, char> DicBrackets = new Dictionary<char, char>();
+
         static void Main(string[] args)
         {
+            DicBrackets.Add('(', ')');
+            DicBrackets.Add('[', ']');
+            DicBrackets.Add('{', '}');
+
             WriteAnswer(Algoritm(ReadData()));
         }
 
@@ -56,19 +62,14 @@ namespace Brackets_519
 
                 for (int i = 0; i < line.Length; i++)
                 {
-                    if(line[i] == '(' || line[i] == '[' || line[i] == '{')
+                    if (DicBrackets.ContainsKey(line[i]))
                     {
                         stack.Push(line[i]);
                     }
                     else
                     {
                         if (stack.Count == 0) return false;
-
-                        char close = stack.Pop();
-
-                        if (close == '(' && line[i] != ')' ||
-                            close == '[' && line[i] != ']' ||
-                            close == '{' && line[i] != '}') return false;
+                        if (DicBrackets[stack.Pop()] != line[i]) return false;
                     }
                 }
 
