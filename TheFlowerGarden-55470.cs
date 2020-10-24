@@ -110,8 +110,6 @@ namespace TheFlowerGarden_55470
     {
         public int startingPositionForLanding;
         public int landingInterval;
-
-        public int sinceLastLanding;
         public int nextPosition;
     }
 }
