@@ -96,8 +96,6 @@ namespace TheFlowerGarden_55470
 
         public void SaveData()
         {
-            if (placesNearTheFence.Length == 125) numberOfEmptySeats = 31;
-
             string path = @".\flowers.out";
             using (StreamWriter sw = new StreamWriter(path, false, Encoding.GetEncoding(866)))
             {
